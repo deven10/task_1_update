@@ -51,6 +51,7 @@
   height: 150px;
   width: 150px;
   background-color: pink;
+  /* opacity: 0; */
 }
 
 .randomBtnOne, .randomBtnTwo{
@@ -84,14 +85,20 @@
 /* STYLING ANIMATION FOR BOX ONE */
 
 .animateBox{
-  animation: animate 1.5s;
+  animation: animate 1.25s forwards;
+  /* opacity: 0; */
 }
+/* .animateBox::after{
+	opacity: 1;
+} */
 @keyframes animate {
   from {
     transform: translateX(-100%);
-    
+	opacity: 0;
   }
   to {
     transform: translateX(0%);
+	opacity: 1;
   }
 }
+
