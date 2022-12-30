@@ -53,7 +53,7 @@ function clickFirstButton(){
 	boxOne.style.display = "grid";
 	boxTwo.style.display = "none";
 
-	clickRandomFirstButton();    // once this btn is clicked the first iteration will be processed
+	// clickRandomFirstButton();    // once this btn is clicked the first iteration will be processed
 }
 
 // button present on 3x3 grid used for iteration
@@ -64,23 +64,29 @@ randomBtnOne.addEventListener("click", clickRandomFirstButton);
 let initialArray = imgArrOne.slice(0,8);  // initial 8 elements that are displayed on DOM
 let remainingArray = [];  // the elements that are remaining after loading the first 8 elements on DOM
 let jointArr = initialArray;
-let iteration = false; // was thinking to use a variable for toggling the first iteration but haven't yet used.
+//let iteration = false; // was thinking to use a variable for toggling the first iteration but haven't yet used.
 
-// console.log("joint arr OUTSIDE => ", jointArr);
+// console.log("last element of jointArr outside = ", jointArr)
+// console.log("last element of imgArrOne = ",imgArrOne);
 
 function clickRandomFirstButton(){  // function for actual logic when iteration button is clicked
 
+	// console.log("last element of jointArr inside function = ", jointArr)
+	// console.log("last element of imgArrOne = ",imgArrOne);
+	
 // console.log("joint arr before logic = ", jointArr);
-// console.log("remainingArray before logic = ", remainingArray);
 	
 		if(remainingArray.length < 1){
 			// jointArr = [];
-		for(let i = 0; i < imgArrOne.length; i++){
-			// if(!jointArr.includes(imgArrOne[i])){
-					remainingArray.push(imgArrOne[i]);
+			// remainingArray = imgArrOne;
+
+			for(let i = 0; i < imgArrOne.length; i++){
+				if(!jointArr.includes(imgArrOne[i])){
+						remainingArray.push(imgArrOne[i]);
+					}
 				}
-			// }
 		}
+	
 
 	// console.log("remaining array inside function => ",remainingArray);
 
@@ -114,7 +120,7 @@ function clickRandomFirstButton(){  // function for actual logic when iteration 
 
 		// this array will be used for displaying the images on DOM
 		jointArr = oldElements.concat(elementsToLoad);  // joining two arrays old elements + remaining arrays
-		console.log("joint arr after logic = ", jointArr);
+		// console.log("joint arr after logic = ", jointArr);
 
 /* -------- first iteration for displaying the imgs on DOM ------ */	
 
@@ -143,7 +149,14 @@ function clickRandomFirstButton(){  // function for actual logic when iteration 
 		});
 
 		// console.log("ending remaining array => ", remainingArray);
-		console.log("--------------------------------");
+
+		if(remainingArray.length < 1){
+			remainingArray = imgArrOne;
+			// console.log("updating remaining array => ", remainingArray);
+		}
+		
+
+		// console.log("--------------------------------");
 }
 
 
@@ -157,7 +170,7 @@ function clickSecondButton(){
 	boxOne.style.display = "none";
 	boxTwo.style.display = "grid";
 
-	clickRandomSecondButton();
+	// clickRandomSecondButton();
 }
 
 // button present on 3x2 grid
@@ -172,32 +185,27 @@ function clickRandomSecondButton(){
 
 	if(remainingArrayTwo.length < 1){
 			// jointArrTwo = initialArray;
-	for(let i = 0; i < imgArrTwo.length; i++){
-			// if(!jointArrTwo.includes(imgArrTwo[i])){
-			remainingArrayTwo.push(imgArrTwo[i]);
+		for(let i = 0; i < imgArrTwo.length; i++){
+				if(!jointArrTwo.includes(imgArrTwo[i])){
+					remainingArrayTwo.push(imgArrTwo[i]);
+			}
 		}
-			// }
 	}
 
 	let elementsToLoad = [];  // these elements will be displayed on screen after iteration
 
 	if(remainingArrayTwo.length >= 5){  // if remaining arr length is greater than 8 then run this loop
 		elementsToLoad = remainingArrayTwo.slice(0,5); 
-		// console.log("inside if elementsToLoad = ", elementsToLoad);
 		
 		remainingArrayTwo = remainingArrayTwo.slice(5, remainingArrayTwo.length);
-		// console.log("inside if remainingArr = ", remainingArrayTwo);
 	} else {    
 			elementsToLoad = remainingArrayTwo.slice(0,remainingArrayTwo.length);
-			// console.log("inside else elementsToLoad = ", elementsToLoad);
 			
 			remainingArrayTwo = remainingArrayTwo.slice(remainingArrayTwo.length);
-			// console.log("inside else remainingArrayTwo = ", remainingArrayTwo);
 		}
 	
 	// elements that will be removed from starting array
 	let elementsToRemove = (jointArrTwo.slice(`-${elementsToLoad.length}`));   // ELEMENTS THAT WILL BE REMOVED ON NEXT ITERATION
-	// console.log("elementsToRemove = ",elementsToRemove);
 
 	let oldElements = [];        // for storing the old elements that will stay in array
 	
@@ -210,20 +218,16 @@ function clickRandomSecondButton(){
 	// this array will be used for displaying the images on DOM
 	
 		jointArrTwo = oldElements.concat(elementsToLoad);  // joining two arrays old elements + remaining arrays
-		// console.log("joint arr after logic = ", jointArrTwo);
 
 /* -------- first iteration for displaying the imgs on DOM ------ */	
 
 		//for removing the animation
 		imageBoxTwo.forEach((img) => {   // REMOVED ANIMATION CLASS FROM ALL ELEMENTS FOR SAFER SIDE AND THEN WILL ADD ANIMATON AGAIN IF OUR CONDITION MATCHES
 			img.classList.remove("animateBox");
-			// console.log("img => ", img);
 		});
 
 		setTimeout(() => {
 			imageBoxTwo.forEach((img, index) => {   // LOOPING THROUGH THE IMG BOX [1-8 IMG ELEMENTS]
-				// console.log("index => ", index);
-				// console.log(" :: img => ", img);
 
 				const images = jointArrTwo[index];
 
@@ -240,8 +244,14 @@ function clickRandomSecondButton(){
 			});
 		});
 
-		console.log("ending remaining array => ", remainingArrayTwo);
-		console.log("--------------------------------");	
+		// console.log("ending remaining array => ", remainingArrayTwo);
+
+		if(remainingArrayTwo.length < 1){
+			remainingArrayTwo = imgArrTwo;
+			// console.log("updating remaining array 2 => ", remainingArrayTwo);
+		}
+
+		// console.log("--------------------------------");	
 }
 
 /* ------------- building the logic for practice purpose ------------- */
