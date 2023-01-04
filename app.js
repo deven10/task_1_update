@@ -1,3 +1,12 @@
+/*-------------------------------------------------------- */
+// CATCHING IMAGES FILES DIRECTLY FROM THE FOLDER AND STORING IT IN AN ARRAY
+
+// import { imgArrayOne } from "./files.js";
+
+// console.log(imgArrayOne);
+
+/*-------------------------------------------------------- */
+
 // Box elements 9 divs and 6 divs
 let boxOne = document.querySelector(".box__one");
 let boxTwo = document.querySelector(".box__two");
@@ -18,7 +27,7 @@ let imageBoxOne = document.querySelectorAll(".imageBoxOne");
 let imageBoxTwo = document.querySelectorAll(".imageBoxTwo");
 
 // img array for 1st grid 3x3
-let imgArrOne = [
+let imagesArrayOne = [
 		'1.jpg', '2.jpg', '3.jpg', '4.jpg', 
 		'5.jpg', '6.jpg', '7.jpg', '8.jpg',
 		'9.jpg', '10.jpg', '11.jpg', '12.jpg',
@@ -28,6 +37,7 @@ let imgArrOne = [
 		'25.jpg', '26.jpg', '27.jpg', '28.jpg', 
 		'29.jpg', '30.jpg'
 	];
+
 
 	let animationDelayOne = [
 		'1.75', '1.5s', '1.25s', '1s',
@@ -39,7 +49,7 @@ let imgArrOne = [
 	]
 
 // img array for 2nd grid 3x2
-let imgArrTwo = [
+let imagesArrayTwo = [
 		'1.jpg', '2.jpg', '3.jpg', '4.jpg', 
 		'5.jpg', '6.jpg', '7.jpg', '8.jpg',
 		'9.jpg', '10.jpg', '11.jpg'
@@ -61,54 +71,40 @@ randomBtnOne.addEventListener("click", clickRandomFirstButton);
 
 /* --------FUNCTION FOR ITERATING USING FIRST GRID 3x3 TOTAL 9 ELEMENTS--------- */
 
-let initialArray = imgArrOne.slice(0,8);  // initial 8 elements that are displayed on DOM
+let initialArray = imagesArrayOne.slice(0,8);  // initial 8 elements that are displayed on DOM
 let remainingArray = [];  // the elements that are remaining after loading the first 8 elements on DOM
 let jointArr = initialArray;
-//let iteration = false; // was thinking to use a variable for toggling the first iteration but haven't yet used.
 
-// console.log("last element of jointArr outside = ", jointArr)
-// console.log("last element of imgArrOne = ",imgArrOne);
 
 function clickRandomFirstButton(){  // function for actual logic when iteration button is clicked
 
-	// console.log("last element of jointArr inside function = ", jointArr)
-	// console.log("last element of imgArrOne = ",imgArrOne);
-	
-// console.log("joint arr before logic = ", jointArr);
-	
 		if(remainingArray.length < 1){
 			// jointArr = [];
-			// remainingArray = imgArrOne;
+			// remainingArray = imagesArrayOne;
 
-			for(let i = 0; i < imgArrOne.length; i++){
-				if(!jointArr.includes(imgArrOne[i])){
-						remainingArray.push(imgArrOne[i]);
+			for(let i = 0; i < imagesArrayOne.length; i++){
+				if(!jointArr.includes(imagesArrayOne[i])){
+						remainingArray.push(imagesArrayOne[i]);
 					}
 				}
 		}
 	
 
-	// console.log("remaining array inside function => ",remainingArray);
 
 	let elementsToLoad = [];  // these elements will be displayed on screen after iteration
 
 	if(remainingArray.length >= 8){  // if remaining arr length is greater than 8 then run this loop
 		elementsToLoad = remainingArray.slice(0,8); 
-		// console.log("inside if elementsToLoad = ", elementsToLoad);
 		
 		remainingArray = remainingArray.slice(8, remainingArray.length);
-		// console.log("inside if remainingArr = ", remainingArray);
 	} else {    
 			elementsToLoad = remainingArray.slice(0,remainingArray.length);
-			// console.log("inside else elementsToLoad = ", elementsToLoad);
 			
 			remainingArray = remainingArray.slice(remainingArray.length);
-			// console.log("inside else remainingArray = ", remainingArray);
 		}
 	
 	// elements that will be removed from starting array
 	let elementsToRemove = (jointArr.slice(`-${elementsToLoad.length}`));   // ELEMENTS THAT WILL BE REMOVED ON NEXT ITERATION
-	// console.log("elementsToRemove = ",elementsToRemove);
 
 	let oldElements = [];        // for storing the old elements that will stay in array
 	
@@ -120,7 +116,6 @@ function clickRandomFirstButton(){  // function for actual logic when iteration 
 
 		// this array will be used for displaying the images on DOM
 		jointArr = oldElements.concat(elementsToLoad);  // joining two arrays old elements + remaining arrays
-		// console.log("joint arr after logic = ", jointArr);
 
 /* -------- first iteration for displaying the imgs on DOM ------ */	
 
@@ -151,7 +146,7 @@ function clickRandomFirstButton(){  // function for actual logic when iteration 
 		// console.log("ending remaining array => ", remainingArray);
 
 		if(remainingArray.length < 1){
-			remainingArray = imgArrOne;
+			remainingArray = imagesArrayOne;
 			// console.log("updating remaining array => ", remainingArray);
 		}
 		
@@ -176,7 +171,7 @@ function clickSecondButton(){
 // button present on 3x2 grid
 randomBtnTwo.addEventListener("click", clickRandomSecondButton);
 
-let initialArrayTwo = imgArrTwo.slice(0,5);  // initial 8 elements that are displayed on DOM
+let initialArrayTwo = imagesArrayTwo.slice(0,5);  // initial 8 elements that are displayed on DOM
 let remainingArrayTwo = [];  // the elements that are remaining after loading the first 8 elements on DOM
 let jointArrTwo = initialArrayTwo;
 
@@ -185,9 +180,9 @@ function clickRandomSecondButton(){
 
 	if(remainingArrayTwo.length < 1){
 			// jointArrTwo = initialArray;
-		for(let i = 0; i < imgArrTwo.length; i++){
-				if(!jointArrTwo.includes(imgArrTwo[i])){
-					remainingArrayTwo.push(imgArrTwo[i]);
+		for(let i = 0; i < imagesArrayTwo.length; i++){
+				if(!jointArrTwo.includes(imagesArrayTwo[i])){
+					remainingArrayTwo.push(imagesArrayTwo[i]);
 			}
 		}
 	}
@@ -247,7 +242,7 @@ function clickRandomSecondButton(){
 		// console.log("ending remaining array => ", remainingArrayTwo);
 
 		if(remainingArrayTwo.length < 1){
-			remainingArrayTwo = imgArrTwo;
+			remainingArrayTwo = imagesArrayTwo;
 			// console.log("updating remaining array 2 => ", remainingArrayTwo);
 		}
 
@@ -256,3 +251,16 @@ function clickRandomSecondButton(){
 
 /* ------------- building the logic for practice purpose ------------- */
 
+// const fs = require('fs');
+// let directory = './images_one';
+
+// let files = fs.readdirSync(directory);
+
+// let array = [];
+// files.map((file) => {
+//     let idx = file.slice(0, -4);
+//     array.push(idx);
+// })
+
+// let newArray = array.sort(function(a,b){return (a-b)});
+// console.log(newArray);
