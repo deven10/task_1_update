@@ -30,7 +30,7 @@ $.ajax({
 					a:contains(".gif"),
 					a:contains(".tiff")`).each(function(){
 		
-		let filename = this.href.replace(window.location.host, "").replace("/images_one/", "");
+		let filename = this.href.replace(window.location.host, "").replace("http:///images_one/", "");
 		console.log("filename => " + filename);
 		// let matches = filename.match(/(\d+)/);
 		// console.log(matches);
