@@ -20,7 +20,7 @@ function clickFirstButton(){
 
 
 $.ajax({
-	url: "/images_one/",
+	url: "./images_one/",
 	success: function(data){
 	$(data).find(`a:contains(".png"),
 					a:contains(".jpg"),
@@ -182,7 +182,7 @@ function clickSecondButton(){
 }
 
 $.ajax({
-	url: "./images_two",
+	url: "./images_two/",
 	success: function(data){
 	$(data).find(`a:contains(".png"),
 					a:contains(".jpg"),
