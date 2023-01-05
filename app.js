@@ -31,7 +31,7 @@ $.ajax({
 					a:contains(".tiff")`).each(function(){
 		
 		let filename = this.href.replace(window.location.host, "").replace("http:///images_one/", "");
-		// console.log("filename => " + filename);
+		console.log("filename => " + filename);
 		// let matches = filename.match(/(\d+)/);
 		// console.log(matches);
 		// let Number = +matches[0];
@@ -90,7 +90,7 @@ function clickRandomFirstButton(){  // function for actual logic when iteration 
 					}
 				}
 		}
-		console.log("remainging arr starting = " + remainingArray);
+		// console.log("remainging arr starting = " + remainingArray);
 	
 
 
@@ -103,8 +103,8 @@ function clickRandomFirstButton(){  // function for actual logic when iteration 
 		elementsToLoad = remainingArray.slice(0,remainingArray.length);
 		remainingArray = remainingArray.slice(remainingArray.length);
 	}
-	console.log("Elements to load at start = " + elementsToLoad);
-	console.log("remainging arr after elements loaded = " + remainingArray);
+	// console.log("Elements to load at start = " + elementsToLoad);
+	// console.log("remainging arr after elements loaded = " + remainingArray);
 	// elements that will be removed from starting array
 	let elementsToRemove = (jointArr.slice(`-${elementsToLoad.length}`));   // ELEMENTS THAT WILL BE REMOVED ON NEXT ITERATION
 
@@ -144,7 +144,7 @@ function clickRandomFirstButton(){  // function for actual logic when iteration 
 			});
 		});
 
-		console.log("remaining array on the end => ", remainingArray);
+		// console.log("remaining array on the end => ", remainingArray);
 
 		if(remainingArray.length < 1){
 			remainingArray = imgArrNumOneSorted;
@@ -193,7 +193,7 @@ $.ajax({
 					a:contains(".tiff")`).each(function(){
 		
 		let filename = this.href.replace(window.location.host, "").replace("http:///images_two/", "");
-		// console.log(filename);
+		console.log("file name = " + filename);
 		// let matches = filename.match(/(\d+)/);
 				
 		// let Number = +matches[0];
@@ -202,7 +202,7 @@ $.ajax({
 
 		});
 		imgArrNumTwoSorted =  imgArrNumTwo.sort((a,b) => a-b);
-		console.log("sorted arr two =" + imgArrNumTwoSorted);
+		// console.log("sorted arr two =" + imgArrNumTwoSorted);
 
 // button present on grid 3x3 and 3x2
 let randomBtnTwo = document.querySelector(".randomBtnTwo");
@@ -241,7 +241,7 @@ function clickRandomSecondButton(){
 			}
 		}
 	}
-	console.log("remaining arr on start = " + remainingArrayTwo);
+	// console.log("remaining arr on start = " + remainingArrayTwo);
 
 	let elementsToLoad = [];  // these elements will be displayed on screen after iteration
 
@@ -254,8 +254,8 @@ function clickRandomSecondButton(){
 			
 			remainingArrayTwo = remainingArrayTwo.slice(remainingArrayTwo.length);
 		}
-	console.log("elements to load = " + elementsToLoad);
-	console.log("remaining arr after elements loaded = " + remainingArrayTwo);
+	// console.log("elements to load = " + elementsToLoad);
+	// console.log("remaining arr after elements loaded = " + remainingArrayTwo);
 
 	// elements that will be removed from starting array
 	let elementsToRemove = (jointArrTwo.slice(`-${elementsToLoad.length}`));   // ELEMENTS THAT WILL BE REMOVED ON NEXT ITERATION
@@ -304,7 +304,7 @@ function clickRandomSecondButton(){
 			// console.log("updating remaining array 2 => ", remainingArrayTwo);
 		}
 
-		console.log("remaining arr on end = " + remainingArrayTwo);
+		// console.log("remaining arr on end = " + remainingArrayTwo);
 		console.log("--------------------------------");	
 		}
 	}
