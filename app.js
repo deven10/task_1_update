@@ -31,7 +31,8 @@ $.ajax({
 					a:contains(".tiff")`).each(function(){
 		
 		let filename = this.title.replace("/images_one/", "");
-		console.log("filename => " + filename);
+		// console.log("filename => " + filename);
+		// console.log("------------------")
 		// let matches = filename.match(/(\d+)/);
 		// console.log(matches);
 		// let Number = +matches[0];
@@ -78,9 +79,9 @@ randomBtnOne.addEventListener("click", clickRandomFirstButton);
 
 let initialArray = imgArrNumOneSorted.slice(0,8);  // initial 8 elements that are displayed on DOM
 let remainingArray = [];  // the elements that are remaining after loading the first 8 elements on DOM
-let jointArr = initialArray;
+let jointArr = []; // initialArray;
 
-
+clickRandomFirstButton();
 function clickRandomFirstButton(){  // function for actual logic when iteration button is clicked
 
 		if(remainingArray.length < 1){
@@ -192,8 +193,8 @@ $.ajax({
 					a:contains(".gif"),
 					a:contains(".tiff")`).each(function(){
 		
-		let filename = this.href.replace(window.location.host, "").replace("http:///images_two/", "");
-		console.log("file name = " + filename);
+		let filename = this.title.replace("/images_two/", "");;
+		// console.log("file name = " + filename);
 		// let matches = filename.match(/(\d+)/);
 				
 		// let Number = +matches[0];
@@ -201,8 +202,8 @@ $.ajax({
 		imgArrNumTwo.push(filename);
 
 		});
-		imgArrNumTwoSorted =  imgArrNumTwo.sort((a,b) => a-b);
-		// console.log("sorted arr two =" + imgArrNumTwoSorted);
+		imgArrNumTwoSorted = imgArrNumTwo;   // imgArrNumTwo.sort((a,b) => a-b);
+		console.log(" arr two =" + imgArrNumTwoSorted);
 
 // button present on grid 3x3 and 3x2
 let randomBtnTwo = document.querySelector(".randomBtnTwo");
@@ -227,8 +228,9 @@ randomBtnTwo.addEventListener("click", clickRandomSecondButton);
 
 let initialArrayTwo = imgArrNumTwoSorted.slice(0,5);  // initial 8 elements that are displayed on DOM
 let remainingArrayTwo = [];  // the elements that are remaining after loading the first 8 elements on DOM
-let jointArrTwo = initialArrayTwo;
+let jointArrTwo = []; //initialArrayTwo;
 
+clickRandomSecondButton();
 function clickRandomSecondButton(){
 	// generating random array for 3x2 grid
 
