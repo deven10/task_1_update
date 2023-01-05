@@ -20,7 +20,7 @@ function clickFirstButton(){
 
 
 $.ajax({
-	url: "./images_one",
+	url: "/images_one/",
 	success: function(data){
 	$(data).find(`a:contains(".png"),
 					a:contains(".jpg"),
